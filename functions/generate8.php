@@ -31,7 +31,7 @@ if (isset($_POST['generate_8'])) {
 
     $_SESSION['boletas_generadas_8'] = $boletas_ocho_numeros;
 
-    header("Location: ../pages/index.php");
+    header("Location: ../pdf8.php");
     exit();
 }
 ?>

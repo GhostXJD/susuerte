@@ -31,7 +31,7 @@ if (isset($_POST['generate_4'])) {
 
     $_SESSION['boletas_generadas_4'] = $boletas_cuatro_numeros;
 
-    header("Location: ../pages/index.php");
+    header("Location: ../pdf4.php");
     exit();
 }
 
