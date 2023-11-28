@@ -10,12 +10,12 @@ function generarLista10000() {
 
 function ochoNumero($lista) {
     $boletas = array();
-    for ($i = 0; $i < count($lista); $i += 4) {
+    for ($i = 0; $i < count($lista); $i += 8) {
         $boleta = array_slice($lista, $i, 8);
         $boleta_sin_repetidos = array_unique($boleta);
         while (count($boleta) !== count($boleta_sin_repetidos)) {
             $boleta = array();
-            for ($j = 0; $j < 4; $j++) {
+            for ($j = 0; $j < 8; $j++) {
                 $boleta[] = rand(1000, 9999);
             }
             $boleta_sin_repetidos = array_unique($boleta);

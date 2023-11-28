@@ -26,7 +26,6 @@
             echo "<p>" . implode(", ", $boleta) . "</p>";
         }
 
-        unset($_SESSION['boletas_generadas_4']); 
     }
     ?>
 </div>
@@ -42,7 +41,6 @@
             echo "<p>" . implode(", ", $boleta) . "</p>";
         }
 
-        unset($_SESSION['boletas_generadas_8']);
     }
     ?>
 </div>
