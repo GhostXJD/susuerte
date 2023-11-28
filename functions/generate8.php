@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 function generarLista10000() {
     $numeros = array();
     for ($i = 0; $i < 10000; $i++) {
@@ -10,8 +10,8 @@ function generarLista10000() {
 
 function ochoNumero($lista) {
     $boletas = array();
-    for ($i = 0; $i < count($lista); $i += 8) {
-        $boleta = array_slice($lista, $i, 4);
+    for ($i = 0; $i < count($lista); $i += 4) {
+        $boleta = array_slice($lista, $i, 8);
         $boleta_sin_repetidos = array_unique($boleta);
         while (count($boleta) !== count($boleta_sin_repetidos)) {
             $boleta = array();
@@ -25,13 +25,13 @@ function ochoNumero($lista) {
     return array_slice($boletas, 0, 1250);
 }
 
-$numeros_aleatorios = generarLista10000();
+if (isset($_POST['generate_8'])) {
+    $numeros_aleatorios = generarLista10000();
+    $boletas_ocho_numeros = ochoNumero($numeros_aleatorios);
 
-$boletas_ocho_numeros = ochoNumero($numeros_aleatorios);
-echo "Boletas con 4 números de 4 cifras:\n";
-for ($i = 0; $i < 5; $i++) {
-    echo implode(", ", $boletas_ocho_numeros[$i]) . "\n";
+    $_SESSION['boletas_generadas_8'] = $boletas_ocho_numeros;
+
+    header("Location: ../pages/index.php");
+    exit();
 }
-echo "El largo de 4 números es " . count($boletas_ocho_numeros);
-
 ?>
