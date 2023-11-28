@@ -25,8 +25,8 @@ $pdf->SetFont('helvetica', '', 8);
 $tbl = <<<EOD
 <table border="1" cellpadding="2" align="center">
  <tr nobr="true">
-  <th colspan="3">Tabla 1</th>
-  <th colspan="3">Tabla 2</th>
+  <th colspan="3">SUSUERTE <br />+569 1234 5678</th>
+  <th colspan="3">SUSUERTE <br />+569 1234 5678</th>
  </tr>
  <tr nobr="true">
   <td>T1ROW 1<br />COLUMN 1</td>
