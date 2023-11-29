@@ -20,8 +20,8 @@ $pdf->SetFont('helvetica', '', 8);
 
 // -----------------------------------------------------------------------------
 $pdf->setEqualColumns(2, 105);
-    
-    
+
+
 session_start();
 
 // Obtener los números generados de la sesión
@@ -36,25 +36,22 @@ if (isset($_SESSION['boletas_generadas_4'])) {
 		height: 21px;
         font-weight: bold;
 	}
-    div.valor {
+    p {
+		position: flex;
+        top: 10px; /* Ajustar la distancia desde arriba */
+        right: 10px; /* Ajustar la distancia desde la derecha */
+        font-size: 10px; /* Tamaño de fuente ajustable */
         font-weight: bold;
-    }
-    div.anular {
-    }
-    div.caducidad {
-    }
+	}
     </style>
 
     <table border="1" cellpadding="2" align="center" style="border-collapse: collapse;">';
-    
+
     foreach ($boletas_4 as $boleta) {
         $chunks = array_chunk($boleta, 2); // Dividir en chunks de 2 números en lugar de 4
 
         $boletas_4_html .= '<tr nobr="true">
-                                <th colspan="2" height="30">SUSUERTE <br />+569 5401 6770</th>
-                                <div class="valor">Valor de $1.000 pesos</div>
-                                <div class="anular">La boleta se anulara si se encuentra rota con tachones, borrones o enmendaduras</div>
-                                <div class="caducidad">Se paga al portador, Caducidad 24 horas</div>
+                                <th colspan="2" height="30">SUSUERTE<br />+569 5401 6770 <p>Valor de $1.000 pesos</p> </th>
                             </tr>';
 
         foreach ($chunks as $chunk) {
@@ -67,7 +64,7 @@ if (isset($_SESSION['boletas_generadas_4'])) {
     }
 
     $boletas_4_html .= '</table>';
-    
+
     // Agregar la tabla al PDF
     $pdf->writeHTML($boletas_4_html, true, false, false, false, '');
 }
