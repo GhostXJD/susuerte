@@ -33,19 +33,29 @@ if (isset($_SESSION['boletas_generadas_4'])) {
     <style>
 
     td {
-		height: 21px
-        font-weight: bold
+		height: 21px;
+        font-weight: bold;
 	}
-
+    div.valor {
+        font-weight: bold;
+    }
+    div.anular {
+    }
+    div.caducidad {
+    }
     </style>
+
     <table border="1" cellpadding="2" align="center" style="border-collapse: collapse;">';
     
     foreach ($boletas_4 as $boleta) {
         $chunks = array_chunk($boleta, 2); // Dividir en chunks de 2 números en lugar de 4
 
         $boletas_4_html .= '<tr nobr="true">
-                                    <th colspan="2" height="30">SUSUERTE <br />+569 1234 5678</th>
-                                </tr>';
+                                <th colspan="2" height="30">SUSUERTE <br />+569 5401 6770</th>
+                                <div class="valor">Valor de $1.000 pesos</div>
+                                <div class="anular">La boleta se anulara si se encuentra rota con tachones, borrones o enmendaduras</div>
+                                <div class="caducidad">Se paga al portador, Caducidad 24 horas</div>
+                            </tr>';
 
         foreach ($chunks as $chunk) {
             $boletas_4_html .= '<tr nobr="true">';
