@@ -28,23 +28,22 @@ if (isset($_SESSION['boletas_generadas_8'])) {
     $boletas_8 = $_SESSION['boletas_generadas_8'];
 
     // Crear la tabla HTML con el diseño y los números generados
-    $boletas_8_html = '
-    <table border="1" cellpadding="2" align="center" style="border-collapse: collapse;">
-        ';
+    $boletas_8_html = '<table border="1" cellpadding="2" align="center" style="border-collapse: collapse;">';
 
     foreach ($boletas_8 as $boleta) {
-        $chunks = array_chunk($boleta, 8);
+        $chunks = array_chunk($boleta, 4);
 
         $boletas_8_html .= '<tr nobr="true">
-                                <th colspan="8">SUSUERTE <br />+569 1234 5678</th>
-                            </tr>
-                            <tr nobr="true">';
+                                    <th colspan="4">SUSUERTE <br />+569 1234 5678</th>
+                                </tr>';
+
         foreach ($chunks as $chunk) {
+            $boletas_8_html .= '<tr nobr="true">';
             foreach ($chunk as $numero) {
                 $boletas_8_html .= "<td>$numero</td>";
             }
+            $boletas_8_html .= '</tr>';
         }
-        $boletas_8_html .= '</tr>';
     }
 
     $boletas_8_html .= '</table>';

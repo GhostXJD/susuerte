@@ -28,23 +28,22 @@ if (isset($_SESSION['boletas_generadas_4'])) {
     $boletas_4 = $_SESSION['boletas_generadas_4'];
 
     // Crear la tabla HTML con el diseño y los números generados
-    $boletas_4_html = '
-    <table border="1" cellpadding="2" align="center" style="border-collapse: collapse;">
-        ';
+    $boletas_4_html = '<table border="1" cellpadding="2" align="center" style="border-collapse: collapse;">';
 
     foreach ($boletas_4 as $boleta) {
-        $chunks = array_chunk($boleta, 4);
+        $chunks = array_chunk($boleta, 2); // Dividir en chunks de 2 números en lugar de 4
 
         $boletas_4_html .= '<tr nobr="true">
-                                <th colspan="4">SUSUERTE <br />+569 1234 5678</th>
-                            </tr>
-                            <tr nobr="true">';
+                                    <th colspan="2">SUSUERTE <br />+569 1234 5678</th>
+                                </tr>';
+
         foreach ($chunks as $chunk) {
+            $boletas_4_html .= '<tr nobr="true">';
             foreach ($chunk as $numero) {
                 $boletas_4_html .= "<td>$numero</td>";
             }
+            $boletas_4_html .= '</tr>';
         }
-        $boletas_4_html .= '</tr>';
     }
 
     $boletas_4_html .= '</table>';
