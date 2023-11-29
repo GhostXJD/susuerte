@@ -21,7 +21,6 @@ $pdf->SetFont('helvetica', '', 8);
 // -----------------------------------------------------------------------------
 $pdf->setEqualColumns(2, 105);
 
-
 session_start();
 
 // Obtener los números generados de la sesión
@@ -33,25 +32,20 @@ if (isset($_SESSION['boletas_generadas_4'])) {
     <style>
 
     td {
-		height: 21px;
+		height: 24px;
         font-weight: bold;
 	}
-    p {
-		position: flex;
-        top: 10px; /* Ajustar la distancia desde arriba */
-        right: 10px; /* Ajustar la distancia desde la derecha */
-        font-size: 10px; /* Tamaño de fuente ajustable */
+    th {
         font-weight: bold;
-	}
+    }
     </style>
-
     <table border="1" cellpadding="2" align="center" style="border-collapse: collapse;">';
 
     foreach ($boletas_4 as $boleta) {
         $chunks = array_chunk($boleta, 2); // Dividir en chunks de 2 números en lugar de 4
 
         $boletas_4_html .= '<tr nobr="true">
-                                <th colspan="2" height="30">SUSUERTE<br />+569 5401 6770 <p>Valor de $1.000 pesos</p> </th>
+                                <th colspan="2" height="30">SUSUERTE <br />+569 5401 6770</th>
                             </tr>';
 
         foreach ($chunks as $chunk) {
@@ -61,9 +55,15 @@ if (isset($_SESSION['boletas_generadas_4'])) {
             }
             $boletas_4_html .= '</tr>';
         }
+
+        $boletas_4_html .= '<tr nobr="true">
+                                <td colspan="2"><div class="caducidad">Se paga al portador, Caducidad 24 horas. La boleta se anulará si se encuentra rota con tachones, borrones o enmendaduras</div></td>
+                            </tr>';
     }
 
     $boletas_4_html .= '</table>';
+
+    $boletas_4_html = str_replace('<th colspan="2" height="30">SUSUERTE <br />+569 5401 6770</th>', '<th colspan="2" height="30">SUSUERTE <br />+569 5401 6770<div class="valor">Valor de $1.000 pesos</div></th>', $boletas_4_html);
 
     // Agregar la tabla al PDF
     $pdf->writeHTML($boletas_4_html, true, false, false, false, '');
