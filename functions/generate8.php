@@ -44,7 +44,7 @@ $lista = generarLista10000();
 $grupos = dividirEnGrupos($lista);
 $boletas_sin_repetidos = eliminarRepetidos($grupos);
 
-$boletas_finales = array_slice($boletas_sin_repetidos, 0, 2500);
+$boletas_finales = array_slice($boletas_sin_repetidos, 0, 1250);
 
 
 if (isset($_POST['generate_8'])) {

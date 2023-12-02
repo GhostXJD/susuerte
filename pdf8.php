@@ -3,9 +3,11 @@
 require_once('./TCPDF-main/tcpdf.php');
 
 /// Extend the TCPDF class to create custom Header and Footer
-class MYPDF extends TCPDF {
+class MYPDF extends TCPDF
+{
     //Page header
-    public function Header() {
+    public function Header()
+    {
         // get the current page break margin
         $bMargin = $this->getBreakMargin();
         // get current auto-page-break mode
@@ -13,7 +15,7 @@ class MYPDF extends TCPDF {
         // disable auto-page-break
         $this->SetAutoPageBreak(false, 0);
         // set bacground image
-        $img_file = K_PATH_IMAGES.'plata.jpg';
+        $img_file = K_PATH_IMAGES . 'plata.jpg';
         $this->Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
         // restore auto-page-break status
         $this->SetAutoPageBreak($auto_page_break, $bMargin);
@@ -52,40 +54,52 @@ if (isset($_SESSION['boletas_generadas_8'])) {
     // Crear la tabla HTML con el diseño y los números generados
     $boletas_8_html = '
     <style>
-
-    td {
-		height: 30px;
+    .info{
         font-weight: bold;
-	}
-    th {
+    }
+    .titulo {
+        font-size: 1.6em;
+        font-weight: bold;
+    }
+    .telefono {
+        font-size: 1.23em;
+        font-weight: bold;
+    }
+    .valor{
+        font-weight: bold;
+        font-size: medium;
+    }
+    .numero {
+        justify-content: center;
+        aling-items: center;
+        font-size: xx-large;
         font-weight: bold;
     }
     </style>
-    <table border="1" cellpadding="2" align="center" style="border-collapse: collapse;">';
+    <table border="1"  cellpadding="2" align="center" style="border-collapse: collapse;">';
 
     foreach ($boletas_8 as $boleta) {
-        $chunks = array_chunk($boleta, 4);
+        $chunks = array_chunk($boleta, 4); // Dividir en chunks de 2 números en lugar de 4
 
         $boletas_8_html .= '<tr nobr="true">
-                                <th colspan="4" height="30">SUSUERTE <br />+569 5401 6770</th>
+                                <th colspan="4"><span class="titulo">SUSUERTE<br/></span><span class="telefono">+569 5401 6770<br/></span><span class="valor">Valor de $1.000 pesos</span></th>
                             </tr>';
 
+
         foreach ($chunks as $chunk) {
-            $boletas_8_html .= '<tr nobr="true">';
+            $boletas_8_html .= '<tr nobr="true" class="numero">';
             foreach ($chunk as $numero) {
-                $boletas_8_html .= "<td>$numero</td>";
+                $boletas_8_html .= "<td >$numero</td>";
             }
             $boletas_8_html .= '</tr>';
         }
 
         $boletas_8_html .= '<tr nobr="true">
-                                <td colspan="4"><div class="caducidad">Se paga al portador, Caducidad 24 horas. La boleta se anulará si se encuentra rota con tachones, borrones o enmendaduras</div></td>
+                                <td class="info" colspan="4"><div class="caducidad">Se paga al portador, Caducidad 24 horas. La boleta se anulará si se encuentra rota con tachones, borrones o enmendaduras</div></td>
                             </tr>';
     }
 
     $boletas_8_html .= '</table>';
-
-    $boletas_8_html = str_replace('<th colspan="4" height="30">SUSUERTE <br />+569 5401 6770</th>', '<th colspan="4" height="30">SUSUERTE <br />+569 5401 6770<div class="valor">Valor de $1.000 pesos</div></th>', $boletas_8_html);
 
     // Agregar la tabla al PDF
     $pdf->writeHTML($boletas_8_html, true, false, false, false, '');
@@ -94,7 +108,7 @@ if (isset($_SESSION['boletas_generadas_8'])) {
 // -----------------------------------------------------------------------------
 
 //Close and output PDF document
-$pdf->Output('Boletas8.pdf', 'I');
+$pdf->Output('Boletas4.pdf', 'I');
 
 //============================================================+
 // END OF FILE
