@@ -39,6 +39,7 @@
                 </div>
             </div>
             <?php
+            unset($_SESSION['boletas_generadas_4']);
         }
         ?>
 
@@ -49,7 +50,7 @@
             <div class="text-center">
                 <h3>Boletas generadas de 8 oportunidades:</h3>
                 <p>Total de boletas generadas de 8 oportunidades: <?php echo count($boletas_8); ?></p>
-                <div style="max-height: 300px; overflow-y: scroll;">
+                <div style="max-height: 500px; overflow-y: scroll;">
                     <table class="table">
                         <thead>
                             <tr>
@@ -67,9 +68,8 @@
                 </div>
             </div>
             <?php
+            unset($_SESSION['boletas_generadas_8']);
         }
         ?>
     </div>
 </div>
-
-<?php include("../includes/footer.php"); ?>
