@@ -43,7 +43,7 @@ $pdf->AddPage();
 
 $pdf->SetFont('helvetica', '', 8);
 
-$pdf->setEqualColumns(2, 105);
+$pdf->setEqualColumns(2, 94);
 
 session_start();
 
@@ -58,11 +58,11 @@ if (isset($_SESSION['boletas_generadas_4'])) {
         font-weight: bold;
     }
     .titulo {
-        font-size: 1.6em;
+        font-size: 2em;
         font-weight: bold;
     }
     .telefono {
-        font-size: 1.23em;
+        font-size: 1.6em;
         font-weight: bold;
     }
     .valor{
@@ -72,7 +72,7 @@ if (isset($_SESSION['boletas_generadas_4'])) {
     .numero {
         justify-content: center;
         aling-items: center;
-        font-size: xx-large;
+        font-size: 2em;
         font-weight: bold;
     }
     </style>
@@ -82,7 +82,7 @@ if (isset($_SESSION['boletas_generadas_4'])) {
         $chunks = array_chunk($boleta, 2); // Dividir en chunks de 2 números en lugar de 4
 
         $boletas_4_html .= '<tr nobr="true">
-                                <th colspan="2"><span class="titulo">SUSUERTE<br/></span><span class="telefono">+569 5401 6770<br/></span><span class="valor">Valor de $1.000 pesos</span></th>
+                                <th colspan="2"><span class="titulo">SUSUERTE<br/></span><span class="telefono"><img src="./TCPDF-main/examples/images/logoWhatsapp.png" width="15" height="15">+569 5401 6770<br/></span><span class="valor">Valor de $1.000 pesos</span></th>
                             </tr>';
 
 
@@ -99,7 +99,7 @@ if (isset($_SESSION['boletas_generadas_4'])) {
                             </tr>';
     }
 
-    $boletas_4_html .= '</table>';
+    $boletas_4_html .= '</table><br />';
 
     // Agregar la tabla al PDF
     $pdf->writeHTML($boletas_4_html, true, false, false, false, '');
