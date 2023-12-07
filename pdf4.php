@@ -56,6 +56,7 @@ if (isset($_SESSION['boletas_generadas_4'])) {
     <style>
     .info{
         font-weight: bold;
+        font-size: 1.1em;
     }
     .titulo {
         font-size: 2em;
@@ -72,7 +73,7 @@ if (isset($_SESSION['boletas_generadas_4'])) {
     .numero {
         justify-content: center;
         aling-items: center;
-        font-size: 2em;
+        font-size: 2.5em;
         font-weight: bold;
     }
     img{
@@ -84,7 +85,7 @@ if (isset($_SESSION['boletas_generadas_4'])) {
         aling-items: center;
     } 
     </style>
-    <table border="1"  cellpadding="4" align="center" style="border-collapse: collapse;">';
+    <table border="1"  cellpadding="6" align="center" style="border-collapse: collapse;">';
 
     foreach ($boletas_4 as $boleta) {
         $chunks = array_chunk($boleta, 2); // Dividir en chunks de 2 números en lugar de 4

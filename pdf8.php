@@ -56,6 +56,7 @@ if (isset($_SESSION['boletas_generadas_8'])) {
     <style>
     .info{
         font-weight: bold;
+        font-size: 1.1em;
     }
     .titulo {
         font-size: 2em;
@@ -72,17 +73,25 @@ if (isset($_SESSION['boletas_generadas_8'])) {
     .numero {
         justify-content: center;
         aling-items: center;
-        font-size: 2em;
+        font-size: 2.5em;
         font-weight: bold;
     }
+    img{
+        justify-content: center;
+        aling-items: center;
+    }
+    .img{
+        justify-content: center;
+        aling-items: center;
+    } 
     </style>
-    <table border="1"  cellpadding="2" align="center" style="border-collapse: collapse;">';
+    <table border="1"  cellpadding="6" align="center" style="border-collapse: collapse;">';
 
     foreach ($boletas_8 as $boleta) {
         $chunks = array_chunk($boleta, 4); // Dividir en chunks de 2 números en lugar de 4
 
         $boletas_8_html .= '<tr nobr="true">
-                                <th colspan="4"><span class="titulo">SUSUERTE<br/></span><span class="telefono"><img src="./TCPDF-main/examples/images/logoWhatsapp.png" width="15" height="15">+569 5401 6770<br/></span><span class="valor">Valor de $1.000 pesos</span></th>
+                                <th colspan="4" hight="50"><span class="titulo">SUSUERTE<br/></span><span class="telefono"><img class="img" src="./TCPDF-main/examples/images/logoWhatsapp.png" width="15" height="15">+569 5401 6770<br/></span><span class="valor">Valor de $1.000 pesos</span></th>
                             </tr>';
 
 
@@ -96,10 +105,11 @@ if (isset($_SESSION['boletas_generadas_8'])) {
 
         $boletas_8_html .= '<tr nobr="true">
                                 <td class="info" colspan="4"><div class="caducidad">Se paga al portador, Caducidad 24 horas. La boleta se anulará si se encuentra rota con tachones, borrones o enmendaduras</div></td>
-                            </tr>';
+                            </tr>
+                            <br />';
     }
 
-    $boletas_8_html .= '</table>';
+    $boletas_8_html .= '</table><br />';
 
     // Agregar la tabla al PDF
     $pdf->writeHTML($boletas_8_html, true, false, false, false, '');
