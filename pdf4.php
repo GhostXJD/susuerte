@@ -75,14 +75,22 @@ if (isset($_SESSION['boletas_generadas_4'])) {
         font-size: 2em;
         font-weight: bold;
     }
+    img{
+        justify-content: center;
+        aling-items: center;
+    }
+    .img{
+        justify-content: center;
+        aling-items: center;
+    } 
     </style>
-    <table border="1"  cellpadding="2" align="center" style="border-collapse: collapse;">';
+    <table border="1"  cellpadding="4" align="center" style="border-collapse: collapse;">';
 
     foreach ($boletas_4 as $boleta) {
         $chunks = array_chunk($boleta, 2); // Dividir en chunks de 2 números en lugar de 4
 
         $boletas_4_html .= '<tr nobr="true">
-                                <th colspan="2"><span class="titulo">SUSUERTE<br/></span><span class="telefono"><img src="./TCPDF-main/examples/images/logoWhatsapp.png" width="15" height="15">+569 5401 6770<br/></span><span class="valor">Valor de $1.000 pesos</span></th>
+                                <th colspan="2" hight="50"><span class="titulo">SUSUERTE<br/></span><span class="telefono"><img class="img" src="./TCPDF-main/examples/images/logoWhatsapp.png" width="15" height="15">+569 5401 6770<br/></span><span class="valor">Valor de $1.000 pesos</span></th>
                             </tr>';
 
 
@@ -96,7 +104,8 @@ if (isset($_SESSION['boletas_generadas_4'])) {
 
         $boletas_4_html .= '<tr nobr="true">
                                 <td class="info" colspan="2"><div class="caducidad">Se paga al portador, Caducidad 24 horas. La boleta se anulará si se encuentra rota con tachones, borrones o enmendaduras</div></td>
-                            </tr>';
+                            </tr>
+                            <br />';
     }
 
     $boletas_4_html .= '</table><br />';
